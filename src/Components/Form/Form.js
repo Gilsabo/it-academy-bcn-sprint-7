@@ -1,6 +1,5 @@
 import Panel from "../Panel/Panel";
 
-
 const Form = () => {
   return (
     <>
@@ -8,10 +7,12 @@ const Form = () => {
       <form className="form" action="">
         <h3>Personal information</h3>
         <div className="personal-information">
-          <input type="text" />
+          <div className="name" style={{display:"block"}}>
           <label htmlFor="user-name">User's name</label>
           <input type="text" />
+          </div>
           <label htmlFor="budget-name">Budget's name</label>
+          <input type="text" />
         </div>
         <div className="services">
           <h3> What service would you like to hire?</h3>
