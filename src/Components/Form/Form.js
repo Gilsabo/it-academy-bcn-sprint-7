@@ -2,46 +2,45 @@ import Panel from "../Panel/Panel";
 import { useState, useRef } from "react";
 import "./Form.css";
 import { useEffect } from "react";
+import { formContext } from "../helper";
 
 
 const Form = () => {
   const [isClicked, setIsClicked] = useState(false);
-  const [websitePrice, setWebsitePrice] = useState({webSitePrice:false, value: 0});
-  const [seoPrice, setSeoPrice] = useState({seoPrice:false, value: 0});
-  const [adsPrice, setAdsPrice] = useState({adsPrice:false, value: 0});
-  
+  const [websitePrice, setWebsitePrice] = useState({
+    webSitePrice: false,
+    value: 0,
+  });
+  const [seoPrice, setSeoPrice] = useState({ seoPrice: false, value: 0 });
+  const [adsPrice, setAdsPrice] = useState({ adsPrice: false, value: 0 });
+
   const handleCheckBoxWebsite = (e) => {
-    setIsClicked(!isClicked)
+    setIsClicked(!isClicked);
     updateCheckbox(e, setWebsitePrice);
     console.log(websitePrice);
   };
 
   const handleCheckBoxSeo = (e) => {
-    updateCheckbox(e,  setSeoPrice);
+    updateCheckbox(e, setSeoPrice);
   };
 
   const handleCheckBoxAds = (e) => {
-    updateCheckbox(e,  setAdsPrice);
+    updateCheckbox(e, setAdsPrice);
   };
-
-  
-  
-  const priceDom = websitePrice.value + seoPrice.value + adsPrice.value
+  const [numberOfLanguages, setNumberOfLanguages] =useState("")
+  const [numberOfPages, setNumberOfPages] = useState("")
+  const priceDom = websitePrice.value + seoPrice.value + adsPrice.value +(numberOfPages *30) + (numberOfLanguages *30);
   useEffect(() => {
     console.log(websitePrice, seoPrice, adsPrice);
   }, [websitePrice, seoPrice, adsPrice, priceDom]);
 
-  
   const updateCheckbox = (e, setCheckBox) => {
     if (e.target.checked === false) {
-      setCheckBox({[e.target.name]: false, value: 0 });
+      setCheckBox({ [e.target.name]: false, value: 0 });
     } else {
-      setCheckBox({[e.target.name]: true, value: Number(e.target.value)  });
+      setCheckBox({ [e.target.name]: true, value: Number(e.target.value) });
     }
   };
-
-  
-
 
   const onSubmit = (e) => {
     e.preventDefault();
@@ -49,9 +48,10 @@ const Form = () => {
   };
   const userRef = useRef();
   const budgetRef = useRef();
+  
 
   return (
-    <>
+    <formContext.Provider value={{numberOfPages, setNumberOfPages, numberOfLanguages, setNumberOfLanguages}  }>
       <form className="form" action="" onSubmit={onSubmit}>
         <h3>Personal information</h3>
         <div className="personal-information">
@@ -98,14 +98,11 @@ const Form = () => {
         <p name="price">Price : {priceDom} € </p>
         <button>Show budget</button>
       </form>
-      
-    </>
+    </formContext.Provider>
   );
 };
 
 export default Form;
-
-
 
 /*const updateCheckbox = (e, checkbox, setCheckBox) => {
     setCheckBox({

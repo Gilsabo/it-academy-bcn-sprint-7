@@ -1,12 +1,16 @@
 import { StyledPanel, Pages } from "./styledPanel";
 import InfoLanguages from "../Info/InfoLanguages";
 import InfoPages from "../Info/InfoPages";
-import { useState } from "react";
+
+import {  formContext } from "../helper";
+import { useContext } from "react";
 
 const Panel = () => {
 
-const [numberOfPages, setNumberOfPages] = useState("")
-const [numberOfLanguages, setNumberOfLanguages] =useState("")
+  const {numberOfPages, setNumberOfPages} =useContext(formContext)
+  const {numberOfLanguages, setNumberOfLanguages} =useContext(formContext)
+
+
 
 const decreasePage= (amount)=>{
   setNumberOfPages(currentCount =>{
