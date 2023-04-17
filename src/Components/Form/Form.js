@@ -2,6 +2,7 @@ import Panel from "../Panel/Panel";
 import { useState, useRef } from "react";
 import "./Form.css";
 import { useEffect } from "react";
+import { NavLink } from "react-router-dom";
 
 const Form = () => {
   const [isClicked, setIsClicked] = useState(false);
@@ -26,8 +27,7 @@ const Form = () => {
     updateCheckbox(e, adsPrice, setAdsPrice);
   };
 
-  const setNumberOfPages=(e)=>(e.target.value)
-  const setNumberOfLanguages=(e)=>(e.target.value)
+  
   
   const priceDom = websitePrice.value + seoPrice.value + adsPrice.value
   useEffect(() => {
@@ -77,7 +77,7 @@ const Form = () => {
           />
           <label htmlFor="website">A website (500 €)</label>
           <div className={isClicked ? "modal-displayed" : "modal-hidden"}>
-            <Panel setNumberOfLanguages={setNumberOfLanguages} setNumberOfPages={setNumberOfPages}/>
+            <Panel />
           </div>
           <input
             checked={seoPrice.seoPrice}
@@ -101,6 +101,7 @@ const Form = () => {
         <p name="price">Price : {priceDom} € </p>
         <button>Show budget</button>
       </form>
+      <NavLink to="/">Go to calculate introduction</NavLink>
     </>
   );
 };
