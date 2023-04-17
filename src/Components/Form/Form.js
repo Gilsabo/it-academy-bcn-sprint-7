@@ -2,7 +2,7 @@ import Panel from "../Panel/Panel";
 import { useState, useRef } from "react";
 import "./Form.css";
 import { useEffect } from "react";
-import { NavLink } from "react-router-dom";
+
 
 const Form = () => {
   const [isClicked, setIsClicked] = useState(false);
@@ -101,7 +101,7 @@ const Form = () => {
         <p name="price">Price : {priceDom} € </p>
         <button>Show budget</button>
       </form>
-      <NavLink to="/">Go to calculate introduction</NavLink>
+      
     </>
   );
 };

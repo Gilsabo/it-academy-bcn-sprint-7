@@ -1,7 +1,7 @@
 import './App.css';
-import Form from './Components/Form/Form';
 import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
 import Introduction from './Components/Introduction/Introduction';
+import Calculation from './Components/Calculation/Calculation';
 
 function App() {
   return (
@@ -14,7 +14,7 @@ function App() {
 
         <Routes>
           <Route exact path="/" element={<Introduction />} />
-          <Route exact path="/calculation" element={<Form />} />
+          <Route exact path="/calculation" element={<Calculation />} />
         </Routes>
       </div>
     </Router>
