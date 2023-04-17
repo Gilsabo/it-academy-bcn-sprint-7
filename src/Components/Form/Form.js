@@ -10,21 +10,18 @@ const Form = () => {
   const [seoPrice, setSeoPrice] = useState({seoPrice:false, value: 0});
   const [adsPrice, setAdsPrice] = useState({adsPrice:false, value: 0});
   
-
- 
-
   const handleCheckBoxWebsite = (e) => {
     setIsClicked(!isClicked)
-    updateCheckbox(e, websitePrice, setWebsitePrice);
+    updateCheckbox(e, setWebsitePrice);
     console.log(websitePrice);
   };
 
   const handleCheckBoxSeo = (e) => {
-    updateCheckbox(e, seoPrice, setSeoPrice);
+    updateCheckbox(e,  setSeoPrice);
   };
 
   const handleCheckBoxAds = (e) => {
-    updateCheckbox(e, adsPrice, setAdsPrice);
+    updateCheckbox(e,  setAdsPrice);
   };
 
   
@@ -35,7 +32,7 @@ const Form = () => {
   }, [websitePrice, seoPrice, adsPrice, priceDom]);
 
   
-  const updateCheckbox = (e, checkbox, setCheckBox) => {
+  const updateCheckbox = (e, setCheckBox) => {
     if (e.target.checked === false) {
       setCheckBox({[e.target.name]: false, value: 0 });
     } else {
