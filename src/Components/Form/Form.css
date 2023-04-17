@@ -1,0 +1,10 @@
+.modal-displayed{
+    display: block;
+
+}
+
+
+.modal-hidden{
+    display: none;
+
+}
