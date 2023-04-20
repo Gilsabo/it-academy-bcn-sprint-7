@@ -1,7 +1,6 @@
 import { StyledPanel, Pages } from "./styledPanel";
 import InfoLanguages from "../Info/InfoLanguages";
 import InfoPages from "../Info/InfoPages";
-
 import {  formContext } from "../helper";
 import { useContext } from "react";
 
