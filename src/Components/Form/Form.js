@@ -10,16 +10,17 @@ const Form = () => {
   const [numberOfLanguages, setNumberOfLanguages] = useState(0);
   const [numberOfPages, setNumberOfPages] = useState(0);
 
-  const [websitePrice, setWebsitePrice] = useState({websitePrice: false ,value: 0 });
-  const [seoPrice, setSeoPrice] = useState({ seoPrice: false, value: 0 });
-  const [adsPrice, setAdsPrice] = useState({ adsPrice: false, value: 0 });
+  const [websitePrice, setWebsitePrice] = useState({value: 0 });
+  const [seoPrice, setSeoPrice] = useState({ value: 0 });
+  const [adsPrice, setAdsPrice] = useState({  value: 0 });
+   const [arrayState, setArrayState] = useState([]);
+  const [isChecked, setIsChecked] = useState({websitePrice :  false, seoPrice: false, adsPrice: false  })
+
   const parsedArrayState = JSON.parse(localStorage.getItem("data"));
-  console.log(parsedArrayState)
-  const [arrayState, setArrayState] = useState([]);
 
   useEffect(() => {
-
     setArrayState([
+      isChecked,
       isClicked,
       websitePrice,
       seoPrice,
@@ -30,6 +31,7 @@ const Form = () => {
     ]);
     
   }, [
+    isChecked,
     isClicked,
     websitePrice,
     adsPrice,
@@ -50,13 +52,14 @@ const Form = () => {
     
     if (parsedArrayState) {
       setArrayState(parsedArrayState);
-      setIsClicked(parsedArrayState[0]);
-      setWebsitePrice(parsedArrayState[1]);
-      setSeoPrice(parsedArrayState[2]);
-      setAdsPrice(parsedArrayState[3]);
-      setNumberOfPages(parsedArrayState[4]);
-      setNumberOfLanguages(parsedArrayState[5]);
-      setTotalPrice(parsedArrayState[6]);
+      setIsChecked(parsedArrayState[0])
+      setIsClicked(parsedArrayState[1]);
+      setWebsitePrice(parsedArrayState[2]);
+      setSeoPrice(parsedArrayState[3]);
+      setAdsPrice(parsedArrayState[4]);
+      setNumberOfPages(parsedArrayState[5]);
+      setNumberOfLanguages(parsedArrayState[6]);
+      setTotalPrice(parsedArrayState[7]);
       console.log(1);
     }
     
@@ -64,9 +67,8 @@ const Form = () => {
   }, []);
 
   const handleCheckBoxWebsite = (e) => {
-    setIsClicked(!isClicked);
+    setIsClicked(!isClicked)
     updateCheckbox(e, setWebsitePrice);
-    console.log(websitePrice);
   };
 
   const handleCheckBoxSeo = (e) => {
@@ -78,7 +80,6 @@ const Form = () => {
   };
 
   useEffect(() => {
-  
     setTotalPrice(
       websitePrice.value +
         seoPrice.value +
@@ -90,16 +91,20 @@ const Form = () => {
 
   const updateCheckbox = (e, setCheckBox) => {
     if (e.target.checked === true) {
-      setCheckBox({ [e.target.name]: true, value: Number(e.target.value) });
+      setCheckBox({  value: Number(e.target.value) });
+      setIsChecked({...isChecked,[e.target.name]:true})
       
     } else {
-      setCheckBox({ [e.target.name]: false, value: 0 });
+      setCheckBox({  value: 0 });
+      setIsChecked({...isChecked, [e.target.name]:false})
     }
   };
 
   const onSubmit = (e) => {
     e.preventDefault();
     console.log(userRef.current.value, budgetRef.current.value);
+    const budget = [{user:userRef.current.value, budgetname:budgetRef.current.value, info:arrayState }]
+    console.log(budget)
   };
   const userRef = useRef();
   const budgetRef = useRef();
@@ -126,35 +131,38 @@ const Form = () => {
         <div className="services">
           <h3> What service would you like to hire?</h3>
           <input
-            checked={websitePrice.websitePrice}
-            onChange={handleCheckBoxWebsite}
+            checked={isChecked.websitePrice}
+            
+            onClick={handleCheckBoxWebsite}
             type="checkbox"
-            id="website"
-            name="website"
+            id="websitePrice"
+            name="websitePrice"
             value="500"
           />
-          <label htmlFor="website">A website (500 €)</label>
+          <label htmlFor="websitePrice">A website (500 €)</label>
           <div className={isClicked ? "modal-displayed" : "modal-hidden"}>
             <Panel />
           </div>
           <input
-            checked={seoPrice.seoPrice}
-            onChange={handleCheckBoxSeo}
+            checked={isChecked.seoPrice}
+            
+            onClick={handleCheckBoxSeo}
             type="checkbox"
-            id="seo"
-            name="seo"
+            id="seoPrice"
+            name="seoPrice"
             value="300"
           />
-          <label htmlFor="seo">Seo consultant (300 €)</label>
+          <label htmlFor="seoPrice">Seo consultant (300 €)</label>
           <input
-            checked={adsPrice.adsPrice}
-            onChange={handleCheckBoxAds}
+            checked={isChecked.adsPrice}
+            
+            onClick={handleCheckBoxAds}
             type="checkbox"
-            id="adds"
-            name="adds"
+            id="adsPrice"
+            name="adsPrice"
             value="200"
           />
-          <label htmlFor="seo">Google ads campaign (200 €)</label>
+          <label htmlFor="seoPrice">Google ads campaign (200 €)</label>
         </div>
         <p name="price">Price : {totalPrice} € </p>
         <button>Show budget</button>
@@ -165,12 +173,4 @@ const Form = () => {
 
 export default Form;
 
-/*const updateCheckbox = (e, checkbox, setCheckBox) => {
-    setCheckBox({
-      
-      [e.target.name]: !checkbox[e.target.name], // toggle the state of the checkbox
-      value: checkbox[e.target.name] ? Number(e.target.value) : 0  // update the checkbox value based on its state
-      
-    });
-    console.log(checkbox[e.target.name])
-  }*/
+
