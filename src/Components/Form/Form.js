@@ -3,8 +3,11 @@ import { useRef } from "react";
 import "./Form.css";
 import { formContext } from "../helper";
 import useCheckboxes from "../useLocalStorage/checkboxes";
+//import { useState } from "react";
 
-const Form = () => {
+const Form = ({arrayBudgetSheet,setArrayBudgetSheet}) => {
+
+  
   const {
     handleCheckBoxAds,
     handleCheckBoxSeo,
@@ -22,14 +25,10 @@ const Form = () => {
   const onSubmit = (e) => {
     e.preventDefault();
     console.log(userRef.current.value, budgetRef.current.value);
-    const budget = [
-      {
-        user: userRef.current.value,
-        budgetname: budgetRef.current.value,
-        info: arrayState,
-      },
-    ];
-    console.log(budget);
+    setArrayBudgetSheet((oldArrayBudgetSheet)=>[...oldArrayBudgetSheet,{ user:userRef.current.value,budgetname: budgetRef.current.value, date: new Date()}])
+      
+    console.log(arrayBudgetSheet)
+    console.log(arrayState)
   };
   const userRef = useRef();
   const budgetRef = useRef();
@@ -94,3 +93,4 @@ const Form = () => {
 };
 
 export default Form;
+

@@ -1,12 +1,14 @@
 import Form from "../Form/Form";
 import Search from "../Search/Search"
 import { NavLink } from "react-router-dom";
+import { useState } from "react";
 
 const Calculation = () => {
+    const [arrayBudgetSheet, setArrayBudgetSheet] = useState("")
     return ( 
         <>
-        <Form />
-        <Search />
+        <Form arrayBudgetSheet={arrayBudgetSheet} setArrayBudgetSheet={setArrayBudgetSheet}/>
+        <Search arrayBudgetSheet={arrayBudgetSheet} />
         <NavLink to="/">Go to calculate introduction</NavLink>
         </>
      );

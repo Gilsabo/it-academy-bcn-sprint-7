@@ -8,9 +8,7 @@ const Panel = () => {
 
   const {numberOfPages, setNumberOfPages} =useContext(formContext)
   const {numberOfLanguages, setNumberOfLanguages} =useContext(formContext)
-
-
-
+  
 const decreasePage= (amount)=>{
   setNumberOfPages(currentCount =>{
     console.log(currentCount + amount, typeof amount, typeof currentCount)
