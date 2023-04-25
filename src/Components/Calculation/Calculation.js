@@ -5,10 +5,12 @@ import { useState } from "react";
 
 const Calculation = () => {
     const [arrayBudgetSheet, setArrayBudgetSheet] = useState("")
+
+    
     return ( 
         <>
         <Form arrayBudgetSheet={arrayBudgetSheet} setArrayBudgetSheet={setArrayBudgetSheet}/>
-        <Search arrayBudgetSheet={arrayBudgetSheet} />
+        <Search arrayBudgetSheet={arrayBudgetSheet} setArrayBudgetSheet={setArrayBudgetSheet} />
         <NavLink to="/">Go to calculate introduction</NavLink>
         </>
      );
