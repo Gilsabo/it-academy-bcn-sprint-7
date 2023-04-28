@@ -16,11 +16,8 @@ const useCheckboxes = () => {
     adsPrice: false,
   });
 
-
   
-    const parsedArrayState = JSON.parse(localStorage.getItem("data"));
- 
-  
+  const parsedArrayState = JSON.parse(localStorage.getItem("data"));
 
   useEffect(() => {
     setArrayState([

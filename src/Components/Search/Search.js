@@ -1,24 +1,28 @@
 import { useEffect } from "react";
 import { useState } from "react";
 
-const Search = ({ arrayBudgetSheet, setArrayBudgetSheet }) => {
+const Search = ({ arrayBudgetSheet, setArrayBudgetSheet}) => {
   const [searchValue, setSearchValue] = useState("");
   const [isEmpty, setIsEmpty] = useState(true);
+  
+ 
+  
 
   const handleAphabeticOrder = () => {
-    const sortAlphabeticOrder = [...arrayBudgetSheet].sort((a, b) =>
+    const sortAlphabeticOrder = [...storedSheets].sort((a, b) =>
       a.budgetname.localeCompare(b.budgetname, { sensitivity: "base" })
     );
     console.log(arrayBudgetSheet);
-    setArrayBudgetSheet(sortAlphabeticOrder);
+    setStoredSheets(sortAlphabeticOrder);
   };
 
   const handleDateOrder = () => {
-    const sortArrayOrder = [...arrayBudgetSheet].sort(
-      (a, b) => a.date - b.date
+    const sortArrayOrder = [...storedSheets].sort(
+      (a, b) =>a.date - b.date
     );
-    console.log(arrayBudgetSheet);
-    return setArrayBudgetSheet(sortArrayOrder);
+    console.log(arrayBudgetSheet, storedSheets );
+    setStoredSheets(sortArrayOrder);
+    
   };
 
   const handleSearchBar = (e) => {
@@ -30,19 +34,40 @@ const Search = ({ arrayBudgetSheet, setArrayBudgetSheet }) => {
     }
   };
 
-  useEffect(()=>{
+  const dataStored = JSON.parse(localStorage.getItem("stored"));
+  const [storedSheets, setStoredSheets] =useState([])
 
-    localStorage.setItem('budgetSheet', JSON.stringify(arrayBudgetSheet))
+console.log(dataStored)
+
+  useEffect(()=>{
+setStoredSheets(arrayBudgetSheet)
+console.log(storedSheets)
+console.log(arrayBudgetSheet)
 
   },[arrayBudgetSheet])
+ 
+  useEffect(() => {
+    
+    
+    localStorage.setItem("stored", JSON.stringify(storedSheets));
+    console.log(storedSheets)
+
+    
+  }, [arrayBudgetSheet,storedSheets]);
+  
+
+  
 
   useEffect(()=>{
-     JSON.parse(localStorage.getItem('budgetSheet'))
+   
+    if(dataStored){
+      setStoredSheets(dataStored)
+      console.log(storedSheets)
+    }
 
   },[])
-
-
-
+ 
+ 
 
   return (
     <>
@@ -57,25 +82,27 @@ const Search = ({ arrayBudgetSheet, setArrayBudgetSheet }) => {
       </div>
       <div className="budget-sheet-box">
         {isEmpty &&
-          arrayBudgetSheet &&
-          arrayBudgetSheet.map((budget, index) => (
+          storedSheets &&
+          storedSheets.map((budget, index) => (
             <div className="sheet-container">
               <div key={index} className="user-sheet">
                 <div>{budget.user}</div>
                 <div>{budget.budgetname}</div>
-                <div className="date">{budget.date.toLocaleDateString()}</div>
+                <div className="date">{ budget.date.toLocaleString()}</div>
+                
               </div>
             </div>
           ))}
         {!isEmpty &&
-          arrayBudgetSheet
+          storedSheets
             .filter((budget) => budget.budgetname.includes(searchValue))
             .map((budget, index) => (
               <div className="sheet-container">
                 <div key={index} className="user-sheet">
                   <div>{budget.user}</div>
                   <div>{budget.budgetname}</div>
-                  <div className="date">{budget.date.toLocaleDateString()}</div>
+                  <div className="date">{budget.date.toLocaleString()}</div>
+                  <div className="div"></div>
                 </div>
               </div>
             ))}
