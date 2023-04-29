@@ -5,7 +5,7 @@ import { useState } from "react";
 
 
 const Calculation = () => {
-    const [arrayBudgetSheet, setArrayBudgetSheet] = useState("")
+    const [arrayBudgetSheet, setArrayBudgetSheet] = useState([])
    
    
     

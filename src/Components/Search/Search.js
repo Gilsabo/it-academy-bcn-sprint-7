@@ -9,19 +9,19 @@ const Search = ({ arrayBudgetSheet, setArrayBudgetSheet}) => {
   
 
   const handleAphabeticOrder = () => {
-    const sortAlphabeticOrder = [...storedSheets].sort((a, b) =>
+    const sortAlphabeticOrder = [...arrayBudgetSheet].sort((a, b) =>
       a.budgetname.localeCompare(b.budgetname, { sensitivity: "base" })
     );
     console.log(arrayBudgetSheet);
-    setStoredSheets(sortAlphabeticOrder);
+    setArrayBudgetSheet(sortAlphabeticOrder);
   };
 
   const handleDateOrder = () => {
-    const sortArrayOrder = [...storedSheets].sort(
+    const sortArrayOrder = [...arrayBudgetSheet].sort(
       (a, b) =>a.date - b.date
     );
-    console.log(arrayBudgetSheet, storedSheets );
-    setStoredSheets(sortArrayOrder);
+    console.log(arrayBudgetSheet, arrayBudgetSheet );
+    setArrayBudgetSheet(sortArrayOrder);
     
   };
 
@@ -35,25 +35,20 @@ const Search = ({ arrayBudgetSheet, setArrayBudgetSheet}) => {
   };
 
   const dataStored = JSON.parse(localStorage.getItem("stored"));
-  const [storedSheets, setStoredSheets] =useState([])
+  
 
 console.log(dataStored)
 
-  useEffect(()=>{
-setStoredSheets(arrayBudgetSheet)
-console.log(storedSheets)
-console.log(arrayBudgetSheet)
-
-  },[arrayBudgetSheet])
+  
  
   useEffect(() => {
+    const data = arrayBudgetSheet
     
-    
-    localStorage.setItem("stored", JSON.stringify(storedSheets));
-    console.log(storedSheets)
+    localStorage.setItem("stored", JSON.stringify(data));
+    console.log(data)
 
     
-  }, [arrayBudgetSheet,storedSheets]);
+  }, [arrayBudgetSheet]);
   
 
   
@@ -61,14 +56,13 @@ console.log(arrayBudgetSheet)
   useEffect(()=>{
    
     if(dataStored){
-      setStoredSheets(dataStored)
-      console.log(storedSheets)
+      setArrayBudgetSheet(dataStored)
+      console.log(arrayBudgetSheet)
     }
 
   },[])
  
  
-
   return (
     <>
       <div className="search-buttons">
@@ -82,8 +76,8 @@ console.log(arrayBudgetSheet)
       </div>
       <div className="budget-sheet-box">
         {isEmpty &&
-          storedSheets &&
-          storedSheets.map((budget, index) => (
+          arrayBudgetSheet &&
+          arrayBudgetSheet.map((budget, index) => (
             <div className="sheet-container">
               <div key={index} className="user-sheet">
                 <div>{budget.user}</div>
@@ -94,11 +88,11 @@ console.log(arrayBudgetSheet)
             </div>
           ))}
         {!isEmpty &&
-          storedSheets
+          arrayBudgetSheet
             .filter((budget) => budget.budgetname.includes(searchValue))
             .map((budget, index) => (
-              <div className="sheet-container">
-                <div key={index} className="user-sheet">
+              <div className="sheet-container" key={index}>
+                <div  className="user-sheet">
                   <div>{budget.user}</div>
                   <div>{budget.budgetname}</div>
                   <div className="date">{budget.date.toLocaleString()}</div>
