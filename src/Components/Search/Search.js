@@ -18,7 +18,7 @@ const Search = ({ arrayBudgetSheet, setArrayBudgetSheet}) => {
 
   const handleDateOrder = () => {
     const sortArrayOrder = [...arrayBudgetSheet].sort(
-      (a, b) =>a.date - b.date
+      (a, b) =>a.hour.localeCompare(b.hour, { sensitivity: "base" })
     );
     console.log(arrayBudgetSheet, arrayBudgetSheet );
     setArrayBudgetSheet(sortArrayOrder);
@@ -82,7 +82,8 @@ console.log(dataStored)
               <div key={index} className="user-sheet">
                 <div>{budget.user}</div>
                 <div>{budget.budgetname}</div>
-                <div className="date">{ budget.date.toLocaleString()}</div>
+                <div className="date">{budget.date} , {budget.hour }</div>
+                <div className="totalprice">{budget.totalPrice} e</div>
                 
               </div>
             </div>
@@ -95,8 +96,9 @@ console.log(dataStored)
                 <div  className="user-sheet">
                   <div>{budget.user}</div>
                   <div>{budget.budgetname}</div>
-                  <div className="date">{budget.date.toLocaleString()}</div>
-                  <div className="div"></div>
+                  <div className="date">{budget.date} , {budget.hour }</div>
+                  
+                  <div className="totalprice">{budget.totalPrice} e</div>
                 </div>
               </div>
             ))}

@@ -8,6 +8,7 @@ import useCheckboxes from "../useLocalStorage/checkboxes";
 const Form = ({arrayBudgetSheet,setArrayBudgetSheet}) => {
 
   
+  
   const {
     handleCheckBoxAds,
     handleCheckBoxSeo,
@@ -25,7 +26,7 @@ const Form = ({arrayBudgetSheet,setArrayBudgetSheet}) => {
   const onSubmit = (e) => {
     e.preventDefault();
     console.log(userRef.current.value, budgetRef.current.value);
-    setArrayBudgetSheet((oldArrayBudgetSheet)=>[...oldArrayBudgetSheet,{ user:userRef.current.value,budgetname: budgetRef.current.value, date: new Date()}])
+    setArrayBudgetSheet((oldArrayBudgetSheet)=>[...oldArrayBudgetSheet,{ user:userRef.current.value,budgetname: budgetRef.current.value, date: new Date().toLocaleDateString(), hour: new Date().toLocaleTimeString(),  totalPrice: totalPrice}])
       
     console.log(arrayBudgetSheet)
     console.log(arrayState)
