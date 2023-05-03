@@ -11,14 +11,13 @@ const InfoPages = () => {
     }
   };
 
-  const closeModal=(e)=>{
-    
-    setIsPopped(false)
-  }
+  const closeModal = (e) => {
+    setIsPopped(false);
+  };
 
-  const preventClosingModal = (e) =>{
-    e.stopPropagation()
-  }
+  const preventClosingModal = (e) => {
+    e.stopPropagation();
+  };
   return (
     <>
       <div className="info-box">
@@ -26,8 +25,11 @@ const InfoPages = () => {
           i
         </div>
       </div>
-      <div className={isPopped ? "displayed-modal" : "hidden-modal"} onClick={closeModal}>
-        <div className ="text-modal" onClick={preventClosingModal} >
+      <div
+        className={isPopped ? "displayed-modal" : "hidden-modal"}
+        onClick={closeModal}
+      >
+        <div className="text-modal" onClick={preventClosingModal}>
           {" "}
           In this space you have to input the number of pages that your website
           will have

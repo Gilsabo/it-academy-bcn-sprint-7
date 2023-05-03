@@ -1,5 +1,4 @@
 import { useState, useEffect } from "react";
-//import { useSearchParams } from "react-router-dom"
 
 const useCheckboxes = () => {
   const [websitePrice, setWebsitePrice] = useState({ value: 0 });
@@ -7,18 +6,16 @@ const useCheckboxes = () => {
   const [adsPrice, setAdsPrice] = useState({ value: 0 });
   const [isClicked, setIsClicked] = useState(false);
   const [totalPrice, setTotalPrice] = useState();
-  const [numberOfLanguages, setNumberOfLanguages] = useState(0)
-  
+  const [numberOfLanguages, setNumberOfLanguages] = useState(0);
   const [numberOfPages, setNumberOfPages] = useState(0);
-
   const [arrayState, setArrayState] = useState([]);
+
   const [isChecked, setIsChecked] = useState({
     websitePrice: false,
     seoPrice: false,
     adsPrice: false,
   });
 
-  
   const parsedArrayState = JSON.parse(localStorage.getItem("data"));
 
   useEffect(() => {
@@ -30,7 +27,7 @@ const useCheckboxes = () => {
       adsPrice,
       numberOfPages,
       numberOfLanguages,
-      
+
       totalPrice,
     ]);
   }, [
@@ -42,13 +39,11 @@ const useCheckboxes = () => {
     totalPrice,
     numberOfLanguages,
     numberOfPages,
-    
   ]);
 
   useEffect(() => {
     const data = arrayState;
     localStorage.setItem("data", JSON.stringify(data));
-    console.log(data);
   }, [arrayState]);
 
   useEffect(() => {
@@ -69,7 +64,6 @@ const useCheckboxes = () => {
   const handleCheckBoxWebsite = (e) => {
     setIsClicked(!isClicked);
     updateCheckbox(e, setWebsitePrice);
-    console.log(websitePrice);
   };
 
   const handleCheckBoxSeo = (e) => {
@@ -108,11 +102,10 @@ const useCheckboxes = () => {
     isChecked,
     isClicked,
     numberOfPages,
-  
     totalPrice,
     setNumberOfLanguages,
     setNumberOfPages,
-    numberOfLanguages
+    numberOfLanguages,
   };
 };
 

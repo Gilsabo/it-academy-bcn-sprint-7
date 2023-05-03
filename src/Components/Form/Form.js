@@ -3,11 +3,10 @@ import { useRef } from "react";
 import "./Form.css";
 import { formContext } from "../helper";
 import useCheckboxes from "../useLocalStorage/checkboxes";
-//import { useState } from "react";
+import { useEffect } from "react";
+import { useSearchParams } from "react-router-dom";
 
-const Form = ({arrayBudgetSheet,setArrayBudgetSheet}) => {
-
-  
+const Form = ({ arrayBudgetSheet, setArrayBudgetSheet }) => {
   const {
     handleCheckBoxAds,
     handleCheckBoxSeo,
@@ -19,26 +18,50 @@ const Form = ({arrayBudgetSheet,setArrayBudgetSheet}) => {
     totalPrice,
     setNumberOfLanguages,
     setNumberOfPages,
-    numberOfLanguages
+    numberOfLanguages,
   } = useCheckboxes();
 
   const onSubmit = (e) => {
     e.preventDefault();
-    console.log(userRef.current.value, budgetRef.current.value);
-    setArrayBudgetSheet((oldArrayBudgetSheet)=>[...oldArrayBudgetSheet,{ user:userRef.current.value,budgetname: budgetRef.current.value, date: new Date().toLocaleDateString(), hour: new Date().toLocaleTimeString(),  totalPrice: totalPrice}])
-      
-    console.log(arrayBudgetSheet)
-    console.log(arrayState)
+    setArrayBudgetSheet((oldArrayBudgetSheet) => [
+      ...oldArrayBudgetSheet,
+      {
+        user: userRef.current.value,
+        budgetname: budgetRef.current.value,
+        date: new Date().toLocaleDateString(),
+        hour: new Date().toLocaleTimeString(),
+        totalPrice: totalPrice,
+      },
+    ]);
+    
+    console.log(arrayState);
   };
   const userRef = useRef();
   const budgetRef = useRef();
+
+  const [searchParams, setSearchParams] = useSearchParams();
+
+  useEffect(() => {
+    setSearchParams({
+      languages: numberOfLanguages,
+      pages: numberOfPages,
+      websitePrice: isChecked.websitePrice,
+      seoPrice: isChecked.seoPrice,
+      adsPrice: isChecked.adsPrice,
+    });
+  }, [
+    numberOfLanguages,
+    setSearchParams,
+    searchParams,
+    numberOfPages,
+    isChecked,
+  ]);
 
   return (
     <formContext.Provider
       value={{
         numberOfPages,
         setNumberOfPages,
-        
         numberOfLanguages,
         setNumberOfLanguages,
       }}
@@ -94,4 +117,3 @@ const Form = ({arrayBudgetSheet,setArrayBudgetSheet}) => {
 };
 
 export default Form;
-

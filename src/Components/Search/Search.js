@@ -1,28 +1,21 @@
-import { useEffect } from "react";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 
-const Search = ({ arrayBudgetSheet, setArrayBudgetSheet}) => {
+const Search = ({ arrayBudgetSheet, setArrayBudgetSheet }) => {
   const [searchValue, setSearchValue] = useState("");
   const [isEmpty, setIsEmpty] = useState(true);
-  
- 
-  
 
   const handleAphabeticOrder = () => {
     const sortAlphabeticOrder = [...arrayBudgetSheet].sort((a, b) =>
       a.budgetname.localeCompare(b.budgetname, { sensitivity: "base" })
     );
-    console.log(arrayBudgetSheet);
     setArrayBudgetSheet(sortAlphabeticOrder);
   };
 
   const handleDateOrder = () => {
-    const sortArrayOrder = [...arrayBudgetSheet].sort(
-      (a, b) =>a.hour.localeCompare(b.hour, { sensitivity: "base" })
+    const sortArrayOrder = [...arrayBudgetSheet].sort((a, b) =>
+      a.hour.localeCompare(b.hour, { sensitivity: "base" })
     );
-    console.log(arrayBudgetSheet, arrayBudgetSheet );
     setArrayBudgetSheet(sortArrayOrder);
-    
   };
 
   const handleSearchBar = (e) => {
@@ -35,34 +28,19 @@ const Search = ({ arrayBudgetSheet, setArrayBudgetSheet}) => {
   };
 
   const dataStored = JSON.parse(localStorage.getItem("stored"));
-  
 
-console.log(dataStored)
-
-  
- 
   useEffect(() => {
-    const data = arrayBudgetSheet
-    
+    const data = arrayBudgetSheet;
     localStorage.setItem("stored", JSON.stringify(data));
-    console.log(data)
-
-    
   }, [arrayBudgetSheet]);
-  
 
-  
-
-  useEffect(()=>{
-   
-    if(dataStored){
-      setArrayBudgetSheet(dataStored)
-      console.log(arrayBudgetSheet)
+  useEffect(() => {
+    if (dataStored) {
+      setArrayBudgetSheet(dataStored);
+      console.log(arrayBudgetSheet);
     }
+  }, []);
 
-  },[])
- 
- 
   return (
     <>
       <div className="search-buttons">
@@ -82,9 +60,10 @@ console.log(dataStored)
               <div key={index} className="user-sheet">
                 <div>{budget.user}</div>
                 <div>{budget.budgetname}</div>
-                <div className="date">{budget.date} , {budget.hour }</div>
+                <div className="date">
+                  {budget.date} , {budget.hour}
+                </div>
                 <div className="totalprice">{budget.totalPrice} e</div>
-                
               </div>
             </div>
           ))}
@@ -93,11 +72,12 @@ console.log(dataStored)
             .filter((budget) => budget.budgetname.includes(searchValue))
             .map((budget, index) => (
               <div className="sheet-container" key={index}>
-                <div  className="user-sheet">
+                <div className="user-sheet">
                   <div>{budget.user}</div>
                   <div>{budget.budgetname}</div>
-                  <div className="date">{budget.date} , {budget.hour }</div>
-                  
+                  <div className="date">
+                    {budget.date} , {budget.hour}
+                  </div>
                   <div className="totalprice">{budget.totalPrice} e</div>
                 </div>
               </div>
