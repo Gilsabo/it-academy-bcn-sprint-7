@@ -1,4 +1,5 @@
 import { useState, useEffect } from "react";
+//import { useSearchParams } from "react-router-dom"
 
 const useCheckboxes = () => {
   const [websitePrice, setWebsitePrice] = useState({ value: 0 });
@@ -6,7 +7,8 @@ const useCheckboxes = () => {
   const [adsPrice, setAdsPrice] = useState({ value: 0 });
   const [isClicked, setIsClicked] = useState(false);
   const [totalPrice, setTotalPrice] = useState();
-  const [numberOfLanguages, setNumberOfLanguages] = useState(0);
+  const [numberOfLanguages, setNumberOfLanguages] = useState(0)
+  
   const [numberOfPages, setNumberOfPages] = useState(0);
 
   const [arrayState, setArrayState] = useState([]);
@@ -28,6 +30,7 @@ const useCheckboxes = () => {
       adsPrice,
       numberOfPages,
       numberOfLanguages,
+      
       totalPrice,
     ]);
   }, [
@@ -39,6 +42,7 @@ const useCheckboxes = () => {
     totalPrice,
     numberOfLanguages,
     numberOfPages,
+    
   ]);
 
   useEffect(() => {
@@ -104,10 +108,11 @@ const useCheckboxes = () => {
     isChecked,
     isClicked,
     numberOfPages,
-    numberOfLanguages,
+  
     totalPrice,
     setNumberOfLanguages,
     setNumberOfPages,
+    numberOfLanguages
   };
 };
 

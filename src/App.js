@@ -13,8 +13,8 @@ function App() {
         </header>
 
         <Routes>
-          <Route exact path="/" element={<Introduction />} />
-          <Route exact path="/calculation" element={<Calculation />} />
+          <Route path="/" element={<Introduction />} />
+          <Route path="/calculation" element={<Calculation />} />
         </Routes>
       </div>
     </Router>

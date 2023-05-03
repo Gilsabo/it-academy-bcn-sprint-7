@@ -7,12 +7,6 @@ import { useState } from "react";
 const Calculation = () => {
     const [arrayBudgetSheet, setArrayBudgetSheet] = useState([])
    
-   
-    
-    
-        
-    
-    
     return ( 
         <>
         <Form arrayBudgetSheet={arrayBudgetSheet} setArrayBudgetSheet={setArrayBudgetSheet}/>

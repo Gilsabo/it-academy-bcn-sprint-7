@@ -8,6 +8,7 @@ const Panel = () => {
 
   const {numberOfPages, setNumberOfPages} =useContext(formContext)
   const {numberOfLanguages, setNumberOfLanguages} =useContext(formContext)
+  console.log(typeof number)
   
 const decreasePage= (amount)=>{
   setNumberOfPages(currentCount =>{
@@ -34,10 +35,11 @@ const decreaseLanguage= (amount)=>{
 
 const increaseLanguage =(amount)=>{
   setNumberOfLanguages(currentCount =>{
-    console.log(currentCount + amount)
+    
     return Number(currentCount) + amount
   })
 }
+
 
 
   return (
@@ -46,7 +48,7 @@ const increaseLanguage =(amount)=>{
         <Pages>
           <label htmlFor="pages">Number of pages</label>
           <button type="button" onClick={()=>decreasePage(1)}>-</button>
-          <input id="pages"min={0} onChange={(e)=>setNumberOfPages(e.target.value)} value ={numberOfPages} type="number" />
+          <input id="pages"min={0} onChange={(e)=>setNumberOfPages((e.target.value))} value ={numberOfPages} type="number" />
           <button type="button" onClick={()=>increasePage(1)}>+</button>
           <InfoPages />
         </Pages>

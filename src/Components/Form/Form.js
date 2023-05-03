@@ -8,7 +8,6 @@ import useCheckboxes from "../useLocalStorage/checkboxes";
 const Form = ({arrayBudgetSheet,setArrayBudgetSheet}) => {
 
   
-  
   const {
     handleCheckBoxAds,
     handleCheckBoxSeo,
@@ -17,10 +16,10 @@ const Form = ({arrayBudgetSheet,setArrayBudgetSheet}) => {
     isChecked,
     isClicked,
     numberOfPages,
-    numberOfLanguages,
     totalPrice,
     setNumberOfLanguages,
     setNumberOfPages,
+    numberOfLanguages
   } = useCheckboxes();
 
   const onSubmit = (e) => {
@@ -39,6 +38,7 @@ const Form = ({arrayBudgetSheet,setArrayBudgetSheet}) => {
       value={{
         numberOfPages,
         setNumberOfPages,
+        
         numberOfLanguages,
         setNumberOfLanguages,
       }}
