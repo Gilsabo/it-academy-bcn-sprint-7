@@ -1,4 +1,4 @@
-import { StyledPanel, Pages } from "./styledPanel";
+import { StyledPanel, Pages, NumberOfPagesStyle } from "./styledPanel";
 import InfoLanguages from "../Info/InfoLanguages";
 import InfoPages from "../Info/InfoPages";
 import { formContext } from "../helper";
@@ -36,7 +36,7 @@ const Panel = () => {
     <>
       <StyledPanel>
         <Pages>
-          <label htmlFor="pages">Number of pages</label>
+          <NumberOfPagesStyle htmlFor="pages">Number of pages</NumberOfPagesStyle>
           <button type="button" onClick={() => decreasePage(1)}>
             -
           </button>

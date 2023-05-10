@@ -1,4 +1,5 @@
 import { useEffect, useState } from "react";
+import "./search.css";
 
 const Search = ({ arrayBudgetSheet, setArrayBudgetSheet }) => {
   const [searchValue, setSearchValue] = useState("");
@@ -37,20 +38,26 @@ const Search = ({ arrayBudgetSheet, setArrayBudgetSheet }) => {
   useEffect(() => {
     if (dataStored) {
       setArrayBudgetSheet(dataStored);
-      console.log(arrayBudgetSheet);
     }
   }, []);
 
   return (
-    <>
-      <div className="search-buttons">
-        <button onClick={handleAphabeticOrder}>Alphabetic order</button>
-        <button onClick={handleDateOrder}>Date order</button>
-        <button>Reset</button>
-      </div>
-      <div className="search-bar">
+    <div className="container-search">
+      <h2 className="search-bar">
         <label htmlFor="search">Search</label>
         <input onChange={handleSearchBar} type="text" />
+      </h2>
+      <div className="search-buttons">
+        <button
+          className="button-alphabetic-order"
+          onClick={handleAphabeticOrder}
+        >
+          Alphabetic order
+        </button>
+        <button className="button-date-order" onClick={handleDateOrder}>
+          Date order
+        </button>
+        <button className="button-reset-order">Reset</button>
       </div>
       <div className="budget-sheet-box">
         {isEmpty &&
@@ -58,12 +65,23 @@ const Search = ({ arrayBudgetSheet, setArrayBudgetSheet }) => {
           arrayBudgetSheet.map((budget, index) => (
             <div className="sheet-container">
               <div key={index} className="user-sheet">
-                <div>{budget.user}</div>
-                <div>{budget.budgetname}</div>
+                <div>User's name : {budget.user}</div>
+                <div>Budget's name : {budget.budgetname}</div>
                 <div className="date">
-                  {budget.date} , {budget.hour}
+                  Date : {budget.date} , <br /> Hour : {budget.hour}
                 </div>
-                <div className="totalprice">{budget.totalPrice} e</div>
+                <div>Website service? {budget.websitePrice ? "yes" : "no"}</div>
+                <div>Seo service? {budget.seoPrice ? "yes" : "no"}</div>
+                <div>Google ads service? {budget.adsPrice ? "yes" : "no"}</div>
+                <div className="">
+                  Number of Languages : {budget.numberOfLanguages}
+                </div>
+                <div className="">
+                  Number of pages : {budget.numberOfPages}
+                </div>
+                <div className="totalprice">
+                  Total price : {budget.totalPrice} euros
+                </div>
               </div>
             </div>
           ))}
@@ -71,19 +89,28 @@ const Search = ({ arrayBudgetSheet, setArrayBudgetSheet }) => {
           arrayBudgetSheet
             .filter((budget) => budget.budgetname.includes(searchValue))
             .map((budget, index) => (
-              <div className="sheet-container" key={index}>
-                <div className="user-sheet">
-                  <div>{budget.user}</div>
-                  <div>{budget.budgetname}</div>
-                  <div className="date">
-                    {budget.date} , {budget.hour}
-                  </div>
-                  <div className="totalprice">{budget.totalPrice} e</div>
+              <div key={index} className="user-sheet">
+                <div>User's name : {budget.user}</div>
+                <div>Budget's name : {budget.budgetname}</div>
+                <div className="date">
+                  Date : {budget.date} , <br /> Hour : {budget.hour}
+                </div>
+                <div>Website service? {budget.websitePrice ? "yes" : "no"}</div>
+                <div>Seo service? {budget.seoPrice ? "yes" : "no"}</div>
+                <div>Google ads service? {budget.adsPrice ? "yes" : "no"}</div>
+                <div className="">
+                  Number of Languages : {budget.numberOfLanguages}
+                </div>
+                <div className="">
+                  Number of pages : {budget.numberOfPages}
+                </div>
+                <div className="totalprice">
+                  Total price : {budget.totalPrice} euros
                 </div>
               </div>
             ))}
       </div>
-    </>
+    </div>
   );
 };
 

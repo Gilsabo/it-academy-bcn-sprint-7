@@ -1,0 +1,63 @@
+
+.container {
+    margin-top: 7%;
+  }
+
+  .title{
+    font-size: 450%;
+    letter-spacing: 0.1em;
+  }
+
+.slogan{
+    font-size: 200%;
+    letter-spacing: 0.1em;
+
+}
+.path-image{
+    z-index: -1;
+    min-height: 100%;
+    min-width: 100%;
+      
+    /* Set up proportionate scaling */
+    width: 100%;
+    height: auto;
+      
+    /* Set up positioning */
+    position: fixed;
+    top: 0;
+    left: 0;
+  }
+
+.konw-more-button {
+  --b: 3px;   /* border thickness */
+  --s: .45em; /* size of the corner */
+  --color: #373B44;
+  
+  padding: calc(.5em + var(--s)) calc(.9em + var(--s));
+  color: var(--color);
+  --_p: var(--s);
+  background:
+    conic-gradient(from 90deg at var(--b) var(--b),#0000 90deg,var(--color) 0)
+    var(--_p) var(--_p)/calc(100% - var(--b) - 2*var(--_p)) calc(100% - var(--b) - 2*var(--_p));
+  transition: .3s linear, color 0s, background-color 0s;
+  outline: var(--b) solid #0000;
+  outline-offset: .6em;
+  font-size: 19px;
+  border: 0;
+  user-select: none;
+  -webkit-user-select: none;
+  touch-action: manipulation;
+  font-size: 20px;
+}
+
+.konw-more-button:hover,
+.konw-more-button:focus-visible{
+  --_p: 0px;
+  outline-color: var(--color);
+  outline-offset: .05em;
+}
+
+.konw-more-button:active {
+  background: var(--color);
+  color: #fff;
+}

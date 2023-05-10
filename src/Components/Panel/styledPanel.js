@@ -2,16 +2,18 @@ import styled from "styled-components";
 
 const StyledPanel = styled.div`
 display:column;
-border: 2px green solid;
+border: 2px white solid;
 border-radius: 10px;
 width: 30rem;
-margin: 0 auto;
 margin-top:30px;
 margin-bottom: 30px;
 padding:5px;
 `
 const Pages =styled.div`
 display:flex;
-
 `
-export  {StyledPanel, Pages}
+
+const NumberOfPagesStyle = styled.label`
+margin-right: 2.7rem;
+`
+export  {StyledPanel, Pages, NumberOfPagesStyle}

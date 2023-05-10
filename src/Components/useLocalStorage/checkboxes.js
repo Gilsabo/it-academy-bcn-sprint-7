@@ -57,7 +57,6 @@ const useCheckboxes = () => {
       setNumberOfPages(parsedArrayState[5]);
       setNumberOfLanguages(parsedArrayState[6]);
       setTotalPrice(parsedArrayState[7]);
-      console.log(1);
     }
   }, []);
 

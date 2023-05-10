@@ -1,10 +1,20 @@
 .info-box{
     width: 20px;
+    margin-left: 0.4rem;
+    
 }
 .info{
-    border: 1px solid black;
+    border: 2px solid white;
     border-radius: 50%;
-    width:auto;
+    text-align: center;
+    color: rgb(245, 201, 7);
+    font-weight: 1000;
+    padding-left: 3px;
+    cursor: pointer;
+    
+
+    
+    
 }
 
 .displayed-modal{
@@ -21,7 +31,7 @@
     background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
 }
 .text-modal{
-    background-color: #fefefe;
+    background-color:rgb(245, 201, 7);
     margin: auto;
     padding: 40px;
     border: 2px solid black;
