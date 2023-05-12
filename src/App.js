@@ -11,9 +11,9 @@ function App() {
     <Router path={process.env.PUBLIC_URL}>
       <div className="App">
         <Routes>
-          <Route path="/" element={<LandingPage />} />
-          <Route path="/introduction" element={<Introduction />} />
-          <Route path="/calculation" element={<Calculation />} />
+          <Route exact path="/" element={<LandingPage />} />
+          <Route exact path="/introduction" element={<Introduction />} />
+          <Route exact path="/calculation" element={<Calculation />} />
         </Routes>
       </div>
     </Router>
