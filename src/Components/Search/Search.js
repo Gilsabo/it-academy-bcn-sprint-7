@@ -63,8 +63,8 @@ const Search = ({ arrayBudgetSheet, setArrayBudgetSheet }) => {
         {isEmpty &&
           arrayBudgetSheet &&
           arrayBudgetSheet.map((budget, index) => (
-            <div className="sheet-container">
-              <div key={index} className="user-sheet">
+            <div className="sheet-container" key={index}>
+              <div  className="user-sheet">
                 <div>User's name : {budget.user}</div>
                 <div>Budget's name : {budget.budgetname}</div>
                 <div className="date">
