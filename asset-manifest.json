@@ -1,0 +1,19 @@
+{
+  "files": {
+    "main.css": "/it-academy-bcn-sprint-7/static/css/main.412d2b37.css",
+    "main.js": "/it-academy-bcn-sprint-7/static/js/main.65b5367d.js",
+    "static/media/path.jpg": "/it-academy-bcn-sprint-7/static/media/path.1aeefc30afdc87be48b0.jpg",
+    "static/media/nature.jpg": "/it-academy-bcn-sprint-7/static/media/nature.ce617c2bba1ffd0ab867.jpg",
+    "static/media/calculator.jpg": "/it-academy-bcn-sprint-7/static/media/calculator.0a49ec5e3fcbf9148e5b.jpg",
+    "static/media/seo.svg": "/it-academy-bcn-sprint-7/static/media/seo.bc0e037261a6d8599044d9e2292f8a41.svg",
+    "static/media/website.svg": "/it-academy-bcn-sprint-7/static/media/website.b449ccb30c80fef1ccd3842bd3090236.svg",
+    "static/media/ads.svg": "/it-academy-bcn-sprint-7/static/media/ads.b89218e01c2adb4797541e0192c985c6.svg",
+    "index.html": "/it-academy-bcn-sprint-7/index.html",
+    "main.412d2b37.css.map": "/it-academy-bcn-sprint-7/static/css/main.412d2b37.css.map",
+    "main.65b5367d.js.map": "/it-academy-bcn-sprint-7/static/js/main.65b5367d.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.412d2b37.css",
+    "static/js/main.65b5367d.js"
+  ]
+}
