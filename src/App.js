@@ -8,7 +8,7 @@ import LandingPage from "./Components/LandingPage/LandingPage";
 
 function App() {
   return (
-    <Router basename={process.env.PUBLIC_URL}>
+    <Router path={process.env.PUBLIC_URL}>
       <div className="App">
         <Routes>
           <Route path="/" element={<LandingPage />} />
